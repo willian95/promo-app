@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>
+      Publicaciones
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="floating">Titulo</ion-label>
+    <ion-input [(ngModel)]="title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Descripción</ion-label>
+    <ion-textarea [(ngModel)]="description"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Cantidad</ion-label>
+    <ion-input type="number" [(ngModel)]="amount"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Precio</ion-label>
+    <ion-input type="number" [(ngModel)]="price"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Categoría</ion-label>
+    <ion-select [(ngModel)]="categoryId" value="1" okText="Ok" cancelText="Cancelar">
+      <ion-select-option value="{{ category.id }}" *ngFor="let category of categories">{{ category.name }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Fecha de venta</ion-label>
+    <ion-datetime [(ngModel)]="saleDate" displayFormat="DD - MM - YY"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Descuento Día 1 %</ion-label>
+    <ion-input type="number" [(ngModel)]="discount1"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Descuento Día 2 %</ion-label>
+    <ion-input type="number" [(ngModel)]="discount2"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Descuento Día 3 %</ion-label>
+    <ion-input type="number" [(ngModel)]="discount3"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Descuento Día 4 %</ion-label>
+    <ion-input type="number" [(ngModel)]="discount4"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Descuento Día 5 %</ion-label>
+    <ion-input type="number" [(ngModel)]="discount5"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Descuento Día 6 %</ion-label>
+    <ion-input type="number" [(ngModel)]="discount6"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Descuento Día 7 %</ion-label>
+    <ion-input type="number" [(ngModel)]="discount7"></ion-input>
+  </ion-item>
+  <ion-button (click)="store()">
+    crear
+  </ion-button>
+
+</ion-content>

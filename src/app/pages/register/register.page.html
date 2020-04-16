@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>
+      Register
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input [(ngModel)]="email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Comuna</ion-label>
+    <ion-select [(ngModel)]="locationId" value="1" okText="Ok" cancelText="Cancelar">
+      <ion-select-option value="{{ location.id }}" *ngFor="let location of locations">{{ location.name }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Clave</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Repetir clave</ion-label>
+    <ion-input type="password" [(ngModel)]="password_confirmation"></ion-input>
+  </ion-item>
+  
+  <ion-button color="primary" small (click)="register()">Registrarse</ion-button>
+
+</ion-content>

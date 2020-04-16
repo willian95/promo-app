@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>
+      {{ data.title }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label class="ion-text-wrap">
+      {{ data.description }}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label class="ion-text-wrap">
+      Precio de venta: {{ data.price }}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label class="ion-text-wrap">
+     categoría: {{ data.category.name }}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label class="ion-text-wrap">
+      descuento: {{ data.discount_days[simDay].discount }} %
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label class="ion-text-wrap">
+      precio por hoy: {{ data.price - (data.price * (data.discount_days[simDay].discount/100)) }}
+    </ion-label>
+  </ion-item>
+  <ion-item *ngFor="let discountDay of data.discount_days; let i = index">
+    <ion-button (click)="simulateDay(i)">
+      simular día {{i + 1}}
+    </ion-button>
+  </ion-item>
+</ion-content>
