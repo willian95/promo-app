@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title>Promoción básica</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="floating">Titulo</ion-label>
+    <ion-input [(ngModel)]="title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Descripción</ion-label>
+    <ion-textarea [(ngModel)]="description"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Cantidad</ion-label>
+    <ion-input type="number" [(ngModel)]="amount"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Precio</ion-label>
+    <ion-input type="number" [(ngModel)]="price"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Categoría</ion-label>
+    <ion-select [(ngModel)]="categoryId" value="1" okText="Ok" cancelText="Cancelar">
+      <ion-select-option value="{{ category.id }}" *ngFor="let category of categories">{{ category.name }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Fecha de venta</ion-label>
+    <ion-datetime [(ngModel)]="saleDate" displayFormat="DD - MM - YY"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <label position="fixed">Imagen Principal</label>
+  </ion-item>
+  <ion-item>
+    <ion-input type="file" (change)="convertBase64($event)" id="imageInput"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="image != null">
+    <img [src]="image" style="width: 100%;">
+  </ion-item>
+
+  <ion-item>
+    <label position="fixed">Imagen Secundaria</label>
+  </ion-item>
+  <ion-item>
+    <ion-input type="file" (change)="convertBase642($event)" id="imageInput"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="image2 != null">
+    <img [src]="image2" style="width: 100%;">
+  </ion-item>
+  <ion-button (click)="next()">
+    Siguiente
+  </ion-button>
+
+</ion-content>

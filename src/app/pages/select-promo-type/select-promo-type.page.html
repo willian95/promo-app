@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Selecciona el tipo de promoción</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-radio-group value="biff" [(ngModel)]="type">
+  
+      <ion-item>
+        <ion-label>Básica</ion-label>
+        <ion-radio slot="start" value="basica" ></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Gold</ion-label>
+        <ion-radio slot="start" value="gold"  disabled="true"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Premium</ion-label>
+        <ion-radio slot="start" value="premium" disabled="true"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-button (click)="next()">
+    siguiente
+  </ion-button>
+
+</ion-content>

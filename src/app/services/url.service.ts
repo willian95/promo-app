@@ -9,9 +9,8 @@ export class UrlService {
 
   getUrl(){
 
-    //return "http://192.168.200.81/webempleadov2/public"
-  	// return "http://beta-webempleadov2.vtelca.gob.ve"
+    //return "https://servertest.sytes.net/promo-backend/public"
   	return "http://localhost:8000";
-
+    //return "http://localhost/promo/public";
   }
 }

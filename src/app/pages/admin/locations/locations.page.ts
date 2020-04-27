@@ -16,10 +16,15 @@ export class LocationsPage implements OnInit {
 
   constructor(private http: HttpClient, private urlService: UrlService, private extractErrorService: ExtractErrorsService) { 
     this.url = this.urlService.getUrl()
-    this.fetch()
+    
   }
 
   ngOnInit() {
+    this.fetch()
+  }
+
+  ionViewDidEnter() {
+    this.fetch()
   }
 
   fetch(){

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { UrlService } from '../../../services/url.service';
 import { ExtractErrorsService } from '../../../services/extract-errors.service';
 
@@ -13,14 +13,36 @@ export class CategoriesPage implements OnInit {
   name = ""
   description = ""
   url = ""
+  image:""
   categories = []
+  color:""
+  className:any
 
-  constructor(private http: HttpClient, private urlService: UrlService, private extractErrorService: ExtractErrorsService) {
+  constructor(
+    private http: HttpClient, 
+    private urlService: UrlService,
+    private extractErrorService: ExtractErrorsService
+  ) {
     this.url = this.urlService.getUrl()
-    this.fetch()
+    
   }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.fetch()
+  }
+
+  convertBase64(event) {
+    var input = event.target;
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (e:any) => {
+        this.image = e.target.result;
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
   }
 
   fetch(){
@@ -41,16 +63,27 @@ export class CategoriesPage implements OnInit {
   }
 
   store(){
+    
+    let data = {
+      image:"",
+      name:"",
+      description:"",
+      color:""
+    }
+    data.image=this.image;
+    data.name=this.name;
+    data.description = this.description
+    data.color = this.color
 
-    this.http.post(this.url+"/api/admin/category/store", {name: this.name, description: this.description})
-    .subscribe((response: any) => {
-      
+    this.http.post(this.url+"/api/admin/category/store", data).subscribe((response:any) => {
+    
       if(response.success == true){
+
         alert(response.msg)
-
         this.name = ""
+        this.image = null
         this.description = ""
-
+        
         this.fetch()
 
       }else{
@@ -69,7 +102,19 @@ export class CategoriesPage implements OnInit {
       alert(string)
 
     })
+    
 
   }
+
+  OnColorChange(){
+
+    this.className = "color-div "+this.color
+
+  }
+
+  
+
+ 
+
 
 }

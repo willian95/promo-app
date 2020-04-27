@@ -28,6 +28,18 @@ const routes: Routes = [
     path: 'post-details',
     loadChildren: () => import('./pages/post-details/post-details.module').then( m => m.PostDetailsPageModule)
   },
+  {
+    path: 'select-promo-type',
+    loadChildren: () => import('./pages/select-promo-type/select-promo-type.module').then( m => m.SelectPromoTypePageModule)
+  },
+  {
+    path: 'basic-promo',
+    loadChildren: () => import('./pages/postsTypes/basic-promo/basic-promo.module').then( m => m.BasicPromoPageModule)
+  },
+  {
+    path: 'discount-days',
+    loadChildren: () => import('./pages/discount-days/discount-days.module').then( m => m.DiscountDaysPageModule)
+  },
 ];
 
 @NgModule({

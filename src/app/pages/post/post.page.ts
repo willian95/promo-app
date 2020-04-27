@@ -28,10 +28,14 @@ export class PostPage implements OnInit {
 
   constructor(private http: HttpClient, private urlService: UrlService, private extractErrorService: ExtractErrorsService) { 
     this.url = this.urlService.getUrl()
-    this.fetchCategories()
+    
   }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.fetchCategories()
   }
 
   fetchCategories(){

@@ -22,10 +22,15 @@ export class RegisterPage implements OnInit {
 
   constructor(private http: HttpClient, private urlService: UrlService, private router: Router, private loggedService: LoggedService, private extractErrorService: ExtractErrorsService) {
     this.url = urlService.getUrl()
-    this.fetchLocations()
+    
   }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter () {
+
+    this.fetchLocations()
   }
 
   register(){

@@ -13,15 +13,26 @@ export class HomePage implements OnInit {
 
   url:any
   posts:any
+  categories:any
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400,
+    slidesPerView: 3
+  };
 
   constructor(private router: Router, private http: HttpClient, private urlService: UrlService, private loggedService: LoggedService) { 
     this.url = urlService.getUrl()
     let user = window.localStorage.getItem('user')
-    this.loggedService.publishSomeData(JSON.parse(user))
-    this.fetch()
+    if(user != null)
+      this.loggedService.publishSomeData(JSON.parse(user))
   }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.fetch()
+    this.fetchCategories()
   }
 
   check(){
@@ -45,6 +56,17 @@ export class HomePage implements OnInit {
     .subscribe((response: any) => {
 
       this.posts = response.posts
+
+    })
+
+  }
+
+  fetchCategories(){
+
+    this.http.get(this.url+"/api/categories/fetch")
+    .subscribe((response: any) => {
+
+      this.categories = response.categories
 
     })
 

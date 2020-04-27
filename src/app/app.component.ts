@@ -58,7 +58,7 @@ export class AppComponent {
       menu.push(
       {
         title : "Post",
-        url   : "/post",
+        url   : "/select-promo-type",
         icon  : "person-outline"
       })
     }
